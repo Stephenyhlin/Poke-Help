@@ -1,3 +1,11 @@
+<div class="input">
+    <label>
+        <input type="text" [formControl] ="search" (keyup.enter)="searchPoke()">
+        <button (click)="searchPoke()">Search</button>
+    </label>
+
+</div>
+
 <div *ngIf="pokemon">
     <p>{{pokemon.id}}</p>
     <p>{{pokemon.name}}</p>
