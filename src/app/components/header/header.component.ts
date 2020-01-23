@@ -23,4 +23,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/pokemon/"]);
   }
 
+  goBuildEditor() {
+    this.router.navigate(["/build"]);
+  }
+
 }
