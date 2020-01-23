@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormArray, Validators } from '@angular/forms';
 
+import { Build } from '../../Models/build'
+import { BuildService } from '../../build.service';
+
 @Component({
   selector: 'app-build-editor',
   templateUrl: './build-editor.component.html',
@@ -8,9 +11,12 @@ import { FormBuilder, FormArray, Validators } from '@angular/forms';
 })
 export class BuildEditorComponent {
 
-  constructor(private fb: FormBuilder) { }
+  successfulBuilds: Build[];
 
-  numMoves;
+  constructor(
+    private fb: FormBuilder,
+    private buildService: BuildService
+    ) { }
 
   buildForm = this.fb.group({
     name: ['', Validators.required],
@@ -33,6 +39,11 @@ export class BuildEditorComponent {
   }
 
   onSubmit() {
-    console.log(this.buildForm.value);
+    let build = new Build(this.buildForm.value);
+    console.log(build);
+    this.buildService.addBuild(build).
+      subscribe(build => {
+        this.successfulBuilds.push(build);
+      });
   }
 }
