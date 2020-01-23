@@ -20,4 +20,15 @@ export class Ability{
         this.effect = data.effect_entries[0].effect;
         
     }
+
+    getName() : String{
+        let ret;
+
+        ret = this.name.replace('-',' ');
+
+        return ret;
+    }
+    getEffect() :String{
+        return this.effect;
+    }
 }

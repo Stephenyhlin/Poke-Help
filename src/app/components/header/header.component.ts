@@ -23,4 +23,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/pokemon/"]);
   }
 
+  goAbility(){
+    this.router.navigate(["/ability/"]);
+  }
+
 }

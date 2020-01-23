@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Ability } from 'src/app/Models/ability';
+import { AbilityService } from 'src/app/services/ability.service';
 
 @Component({
   selector: 'app-abilities',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./abilities.component.css']
 })
 export class AbilitiesComponent implements OnInit {
-
-  constructor() { }
+  ability: Ability;
+  a_id: number = 69;
+  
+  constructor(
+    private abilityService : AbilityService
+  ) { }
 
   ngOnInit() {
+    this.getAbility();
   }
 
+  getAbility(): void{
+    this.abilityService.getAbility(this.a_id).subscribe(data => this.ability = data);
+  }
 }
