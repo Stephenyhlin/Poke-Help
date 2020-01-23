@@ -23,6 +23,9 @@ export class PokemonService {
   // Create the get for pokemon information
   getPokemon(id : number): Observable< Pokemon>{
     return this.http.get< Pokemon>(environment.POKE_API + constant.pokemonContent + id.toString())
-    .pipe(map(data => (new Pokemon())));
+    .pipe(
+      map(data => (new Pokemon(data)))
+      );
   }
+  // .pipe(map(data => (new Pokemon())))
 }
