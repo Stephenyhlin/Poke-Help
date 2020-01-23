@@ -1,6 +1,8 @@
 <div class="input">
     <label>
-        <input type="text" [formControl] ="search" (keyup.enter)="searchPoke()">
+        <input type="text" [formControl] ="search" (keyup.enter)="searchPoke()" (keydown.arrowright) = "onRight()"
+        (keyup.arrowleft) = "onLeft()"
+        >
         <button (click)="searchPoke()">Search</button>
     </label>
 
