@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 // Imports for material angular
@@ -15,6 +16,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BuildEditorComponent } from './components/build-editor/build-editor.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MovesComponent,
     ItemsComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    BuildEditorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

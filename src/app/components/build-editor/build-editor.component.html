@@ -1,0 +1,45 @@
+<body>
+    <br>
+    <div id="formWrapper">
+        <form [formGroup]="buildForm" (ngSubmit)="onSubmit()">
+            <label>
+            Pokemon Name:
+            <input type="text" formControlName="name">
+            </label>
+            <label>
+            ID:
+            <input type="text" formControlName="ID">
+            </label>
+            <div formGroupName="information">
+                <h3>Pokemon Information</h3>
+            
+                <label>
+                Competition:
+                <input type="text" formControlName="competition">
+                </label>
+            
+                <label>
+                IV:
+                <input type="text" formControlName="IV">
+                </label>
+                
+                <label>
+                Nature:
+                <input type="text" formControlName="nature">
+                </label>
+            </div>
+            <div formArrayName="moves">
+                <h3>Moves</h3>
+                <div *ngFor="let move of moves.controls; let i=index">
+                    <!-- The repeated alias template -->
+                    <label>
+                    Move {{i + 1}}:
+                    <input type="text" [formControlName]="i">
+                    </label>
+                </div>
+            </div>
+            <button id="submitButton" type="submit" [disabled]="!buildForm.valid">Submit</button>
+        </form>
+    </div>
+</body>
+  
