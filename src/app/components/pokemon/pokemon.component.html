@@ -8,10 +8,20 @@
 
 </div>
 
-<div *ngIf="pokemon">
-    <p>{{pokemon.id}}</p>
+
+<div *ngIf="pokemon$ | async as pokemon1">
+    <p>{{pokemon1.id }}</p>
+    <p>{{pokemon1.name}}</p>
+    <img src = {{pokemon1.sprites.back_default}}>
+    <p >{{pokemon1.height}}</p>
+    <li *ngFor="let array of pokemon1.ability">{{array.ability.name}}</li>
+</div>
+
+
+<!-- <div *ngIf="pokemon">
+    <p>{{pokemon.id || async}}</p>
     <p>{{pokemon.name}}</p>
     <img src = {{pokemon.sprites.back_default}}>
     <p >{{pokemon.height}}</p>
     <li *ngFor="let array of pokemon.ability">{{array.ability.name}}</li>
-</div>
+</div> -->
