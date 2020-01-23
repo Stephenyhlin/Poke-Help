@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators } from '@angular/forms';
 
 import { Build } from '../../Models/build'
@@ -9,7 +9,7 @@ import { BuildService } from '../../build.service';
   templateUrl: './build-editor.component.html',
   styleUrls: ['./build-editor.component.css']
 })
-export class BuildEditorComponent {
+export class BuildEditorComponent implements OnInit{
 
   successfulBuilds: Build[];
 
@@ -18,9 +18,13 @@ export class BuildEditorComponent {
     private buildService: BuildService
     ) { }
 
+    ngOnInit() {
+      this.successfulBuilds = [];
+    }
+
   buildForm = this.fb.group({
     name: ['', Validators.required],
-    ID: ['', Validators.required],
+    id: ['', Validators.required],
     information: this.fb.group({
       competition: ['', Validators.required],
       IV: ['', Validators.required],
@@ -42,8 +46,6 @@ export class BuildEditorComponent {
     let build = new Build(this.buildForm.value);
     console.log(build);
     this.buildService.addBuild(build).
-      subscribe(build => {
-        this.successfulBuilds.push(build);
-      });
+      subscribe(newBuild => this.successfulBuilds.push(newBuild));
   }
 }

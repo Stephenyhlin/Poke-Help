@@ -1,8 +1,10 @@
-package com.pokehelp.backendController;
+package com.pokehelp.backend;
 
 import java.util.concurrent.atomic.AtomicLong;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.ArrayList;
+import java.util.Stack;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +18,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.pokehelp.pokemon.Pokemon;
-
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
 public class BackendController {
 
-  private static ArrayList<Pokemon> heroList = new ArrayList<Pokemon>();
+  private static ArrayList<Build> buildList = new ArrayList<Build>();
 
   // @ModelAttribute
 	// public void setResponseHeader(HttpServletResponse response) {
@@ -35,31 +35,31 @@ public class BackendController {
   //   return new Greeting(counter.incrementAndGet(), String.format(template, name));
   // }
 
-  @PostMapping("/add")
+  @PostMapping("/addBuild")
   @ResponseBody
-  public Pokemon addHero(@RequestBody Pokemon pokemon) {
-    if (!heroList.contains(pokemon)){
-      heroList.add(pokemon);
+  public Build addHero(@RequestBody Build build) {
+    if (!buildList.contains(build)){
+      buildList.add(build);
     }
-    return pokemon;
+    return build;
   }
 
   @PutMapping("/update")
   @ResponseBody
-  public Pokemon updateHero(@RequestBody Pokemon pokemon) {
-    int index = heroList.indexOf(pokemon);
-    Pokemon modifyPokemon;
-    modifyPokemon = heroList.get(index);
-    modifyPokemon.setName(pokemon.getName());
-    return modifyPokemon;
+  public Build updateHero(@RequestBody Build build) {
+    int index = buildList.indexOf(build);
+    Build modifyBuild;
+    modifyBuild = buildList.get(index);
+    modifyBuild.name = build.name;
+    return modifyBuild;
   }
 
   @DeleteMapping("/delete/{id}")
   @ResponseBody
   public void deleteHero(@PathVariable String id) {
-    for(Pokemon pokemon : heroList){
-      if (pokemon.getId() == Integer.parseInt(id)){
-        heroList.remove(pokemon);
+    for(Build build : buildList){
+      if (build.id == id){
+        buildList.remove(build);
         break;
       }
     }
@@ -69,25 +69,25 @@ public class BackendController {
   @GetMapping("/get")
   @ResponseBody
   public Object[] getHeroes() {
-    return heroList.toArray();
+    return buildList.toArray();
   }
 
-  @GetMapping("/get/{id}")
-  @ResponseBody
-  public Pokemon getHero(@PathVariable String id) {
-    for(Pokemon pokemon : heroList){
-      if (pokemon.getId() == Integer.parseInt(id)){
-        return pokemon;
-      }
-    }
-    return new Pokemon(Integer.parseInt(id), "");
-  }
+  // @GetMapping("/get/{id}")
+  // @ResponseBody
+  // public Build getHero(@PathVariable String id) {
+  //   for(Build build : buildList){
+  //     if (build.getId() == Integer.parseInt(id)){
+  //       return build;
+  //     }
+  //   }
+  //   return new Build(Integer.parseInt(id), "");
+  // }
 
-  @GetMapping("/batman")
-  @ResponseBody
-  public void addBatman() {
-    heroList.add(new Pokemon(1, "Batman"));
-    return;
-  }
+  // @GetMapping("/batman")
+  // @ResponseBody
+  // public void addBatman() {
+  //   buildList.add(new Build(1, "Batman"));
+  //   return;
+  // }
 
 }

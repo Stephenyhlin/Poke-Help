@@ -1,6 +1,6 @@
 export class Build {
     name: String;
-    ID: String;
+    id: String;
     competition: String;
     IV: String;
     nature: String;
@@ -8,7 +8,7 @@ export class Build {
 
     constructor(data: any){
         this.name = data['name'];
-        this.ID = data['ID'];
+        this.id = data['id'];
         this.competition = data['information']['competition'];
         this.IV = data['information']['IV'];
         this.nature = data['information']['nature'];
