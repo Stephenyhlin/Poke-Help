@@ -3,4 +3,5 @@
     <p>{{pokemon.name}}</p>
     <img src = {{pokemon.sprites.back_default}}>
     <p >{{pokemon.height}}</p>
+    <li *ngFor="let array of pokemon.ability">{{array.ability.name}}</li>
 </div>
