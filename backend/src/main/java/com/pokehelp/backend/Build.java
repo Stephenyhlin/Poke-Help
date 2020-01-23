@@ -3,14 +3,14 @@ package com.pokehelp.backend;
 public class Build {
 
     public String name;
-    public String id;
+    public long id;
     public String competition;
-    public String IV;
+    public long IV;
     public String nature;
     public String[] moves = new String[4];
     //private String item;
 
-    public Build(String name, String id, String competition, String IV, String nature, String[] moves) {
+    public Build(String name, long id, String competition, long IV, String nature, String[] moves) {
         this.name = name;
         this.id = id;
         this.competition = competition;
