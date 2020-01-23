@@ -11,10 +11,16 @@
 
 <div *ngIf="pokemon$ | async as pokemon1">
     <p>{{pokemon1.id }}</p>
-    <p>{{pokemon1.name}}</p>
+    <p>{{pokemon1.name | titlecase}}</p>
     <img src = {{pokemon1.sprites.back_default}}>
     <p >{{pokemon1.height}}</p>
     <li *ngFor="let array of pokemon1.ability">{{array.ability.name}}</li>
+    <div>
+        <p> Moves</p>
+        <li *ngFor="let array of pokemon1.moves">{{array.move.name | titlecase | replace: '-':' '}}</li>
+    </div>
+    
+
 </div>
 
 
