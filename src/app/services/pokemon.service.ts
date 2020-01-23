@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 import { constant } from '../Models/constant';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 
 
@@ -14,18 +14,26 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PokemonService {
-  pokemon : Pokemon;
+  pokemon: Pokemon;
 
   constructor(
     private http: HttpClient,
   ) { }
 
   // Create the get for pokemon information
-  getPokemon(id : number): Observable< Pokemon>{
-    return this.http.get< Pokemon>(environment.POKE_API + constant.pokemonContent + id.toString())
-    .pipe(
-      map(data => (new Pokemon(data)))
+  getPokemonId(id: number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContent + id.toString())
+      .pipe(
+        map(data => (new Pokemon(data)))
       );
   }
+
+  getPokemonName(name: String): Observable<Pokemon> {
+    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContent + name)
+      .pipe(
+        map(data => (new Pokemon(data))),
+      );
+  }
+
   // .pipe(map(data => (new Pokemon())))
 }
