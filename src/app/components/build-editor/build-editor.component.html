@@ -33,10 +33,9 @@
                 <div *ngFor="let move of moves.controls; let i=index">
                     <!-- The repeated alias template -->
                     <label>
-                    Move:
+                    Move {{i + 1}}:
                     <input type="text" [formControlName]="i">
                     </label>
-                    <button id="addButton" type="button" (click)="addMove()">Add Move</button>
                 </div>
             </div>
             <button id="submitButton" type="submit" [disabled]="!buildForm.valid">Submit</button>

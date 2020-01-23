@@ -10,31 +10,27 @@ export class BuildEditorComponent {
 
   constructor(private fb: FormBuilder) { }
 
+  numMoves;
+
   buildForm = this.fb.group({
     name: ['', Validators.required],
-    ID: [''],
+    ID: ['', Validators.required],
     information: this.fb.group({
-      competition: [''],
-      IV: [''],
-      nature: [''],
+      competition: ['', Validators.required],
+      IV: ['', Validators.required],
+      nature: ['', Validators.required],
     }),
     moves: this.fb.array([
-      this.fb.control('')
+      this.fb.control('', Validators.required), 
+      this.fb.control('', Validators.required),
+      this.fb.control('', Validators.required),
+      this.fb.control('', Validators.required)
     ])
-  })
+  });
 
   get moves() {
     return this.buildForm.get('moves') as FormArray;
   }
-
-  addMove() {
-    this.moves.push(this.fb.control(''));
-  }
-
-  // buildForm = new FormGroup({
-  //   name: new FormControl(''),
-  //   ID: new FormControl(''),
-  // });
 
   onSubmit() {
     console.log(this.buildForm.value);
