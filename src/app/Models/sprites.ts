@@ -7,4 +7,8 @@ export class Sprites {
     front_female:String;
     front_shiny:String;
     front_shiny_female:String;
+
+    constructor(data: Sprites){
+        this.back_default = data.back_default;
+    }
 }
