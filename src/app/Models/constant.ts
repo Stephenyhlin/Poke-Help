@@ -1,9 +1,14 @@
 export const constant = {
     //We will put any constants here
-    pokemonContent : 'pokemon/',
+    pokemonContentAPI : 'pokemon/',
     pokemon : 'pokemon',
-    abilityContent :'ability/',
+    pokemonContent : '/pokemon/',
+    abilityContentAPI :'ability/',
     ability : 'ability',
-    localhost: 'http://localhost:4200/'
+    abilityContent : '/ability/',
+    moves: 'moves',
+    moveContentAPI: 'move/',
+    moveContent : '/moves/',
+    error: '/error'
     
 }

@@ -18,35 +18,37 @@ export class AbilitiesComponent implements OnInit {
   a_id: number = 69;
   search_value: string;
   search = new FormControl('');
-  
+
   constructor(
-    private abilityService : AbilityService,
+    private abilityService: AbilityService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.search_value = params['param'];
-      let reg = new RegExp(' ', 'g');
-      this.search_value = this.search_value.replace(reg,'-').toLowerCase();
-      this.getAbility();
+      if (params['param']) {
+        this.search_value = params['param'];
+        let reg = new RegExp(' ', 'g');
+        this.search_value = this.search_value.replace(reg, '-').toLowerCase();
+        this.getAbility();
+      }
     })
   }
-  searchAb(){
+  searchAb() {
     this.router.navigate([constant.abilityContent, this.search.value]);
   }
 
-  getAbility(): void{
+  getAbility(): void {
     this.ability$ = this.abilityService.getAbility(this.search_value).pipe(
       tap(ab => {
         this.a_id = ab.id;
         this.search.setValue(this.search_value);
       },
-      catchError(() => {
-        this.router.navigate(['/error',constant.ability]);
-        return throwError('404');
-      })
+        catchError(() => {
+          this.router.navigate(['/error', constant.ability]);
+          return throwError('404');
+        })
       )
     );
   }

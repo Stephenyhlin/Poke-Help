@@ -16,7 +16,7 @@ export class AbilityService {
   ) { }
 
   getAbility(value : string): Observable<Ability>{
-    return this.http.get<Ability>(environment.POKE_API + constant.abilityContent + value).pipe(
+    return this.http.get<Ability>(environment.POKE_API + constant.abilityContentAPI + value).pipe(
       map(data => new Ability(data))
     );
   };

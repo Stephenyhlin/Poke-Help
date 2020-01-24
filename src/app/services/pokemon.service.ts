@@ -22,14 +22,14 @@ export class PokemonService {
 
   // Create the get for pokemon information
   getPokemonId(id: number): Observable<Pokemon> {
-    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContent + id.toString())
+    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContentAPI + id.toString())
       .pipe(
         map(data => (new Pokemon(data)))
       );
   }
 
   getPokemonName(name: String): Observable<Pokemon> {
-    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContent + name)
+    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContentAPI + name)
       .pipe(
         map(data => (new Pokemon(data))),
       );

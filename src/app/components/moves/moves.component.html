@@ -1,1 +1,15 @@
-<p>moves works!</p>
+<div class="input">
+    <label>
+        <input type="text" [formControl] ="search" (keyup.enter)="searchM()"
+        >
+        <button (click)="searchM()">Search</button>
+    </label>
+
+</div>
+
+
+<div *ngIf="move$ | async as move">
+    <p>{{move.getName() | titlecase}}</p>
+    <p>{{move.getEffectFlavor()}}</p>
+
+</div>

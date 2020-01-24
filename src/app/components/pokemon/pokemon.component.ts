@@ -18,7 +18,7 @@ export class PokemonComponent implements OnInit {
   pokemon$: Observable<Pokemon>;
 
   pokemon: Pokemon;
-  search = new FormControl('');
+  search = new FormControl('Enter a pokemon name');
   poke_id: number;
   poke_name: String;
 
@@ -51,8 +51,8 @@ export class PokemonComponent implements OnInit {
     this.router.navigate(['/pokemon/', this.search.value]);
   }
 
-  goTo(name:string){
-    this.router.navigate(['/ability/',name]);
+  goTo(name:string,contentType:string){
+    this.router.navigate([contentType,name]);
   }
 
   // getPokemon(): void {

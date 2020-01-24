@@ -19,19 +19,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ReplacePipe } from './pipes/replace.pipe';
 import { ReplaceWithspacePipe } from './pipes/replace-withspace.pipe';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PokemonComponent,
-    AbilitiesComponent,
-    MovesComponent,
+    // PokemonComponent,
+    // AbilitiesComponent,
+    // MovesComponent,
     ItemsComponent,
     DashboardComponent,
     HeaderComponent,
     ErrorPageComponent,
-    ReplacePipe,
-    ReplaceWithspacePipe
+    ReplacePipe
   ],
   imports: [
     BrowserModule,
