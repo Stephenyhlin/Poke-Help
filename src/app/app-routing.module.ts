@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'ability', component: AbilitiesComponent},
+  {path: 'ability/:param', component: AbilitiesComponent},
   {path: 'error/', component: ErrorPageComponent},
   {path: 'error/:param', component: ErrorPageComponent}
 ];

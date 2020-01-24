@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { ReplaceWithspacePipe } from './pipes/replace-withspace.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReplacePipe } from './pipes/replace.pipe';
     DashboardComponent,
     HeaderComponent,
     ErrorPageComponent,
-    ReplacePipe
+    ReplacePipe,
+    ReplaceWithspacePipe
   ],
   imports: [
     BrowserModule,

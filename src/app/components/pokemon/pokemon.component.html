@@ -3,7 +3,7 @@
         <input type="text" [formControl] ="search" (keyup.enter)="searchPoke()" (keydown.arrowright) = "onRight()"
         (keyup.arrowleft) = "onLeft()"
         >
-        <button (click)="searchPoke()">Search</button>
+        <button (click)="search()">Search</button>
     </label>
 
 </div>
@@ -14,10 +14,12 @@
     <p>{{pokemon1.name | titlecase}}</p>
     <img src = {{pokemon1.sprites.back_default}}>
     <p >{{pokemon1.height}}</p>
-    <li *ngFor="let array of pokemon1.ability">{{array.ability.name}}</li>
+    <ng-container *ngFor="let array of pokemon1.ability" >
+        <a (click) = "goTo(array.ability.name)">{{array.ability.name |titlecase |replaceWithspace}}</a>
+    </ng-container>
     <div>
         <p> Moves</p>
-        <li *ngFor="let array of pokemon1.moves">{{array.move.name | titlecase | replace: '-':' '}}</li>
+        <li *ngFor="let array of pokemon1.moves">{{array.move.name | titlecase | replaceWithspace}}</li>
     </div>
     
 

@@ -1,5 +1,15 @@
-<div *ngIf="ability">
-    <p>{{ability.getName()}}</p>
-    <p>{{ability.getEffect()}}</p>
+<div class="input">
+    <label>
+        <input type="text" [formControl] ="search" (keyup.enter)="searchAb()"
+        >
+        <button (click)="searchAb()">Search</button>
+    </label>
+
+</div>
+
+
+<div *ngIf="ability$ | async as ability1">
+    <p>{{ability1.getName() | titlecase}}</p>
+    <p>{{ability1.getEffect()}}</p>
 
 </div>

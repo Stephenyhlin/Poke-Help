@@ -10,14 +10,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AbilityService {
-  private ability: Ability;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getAbility(id : number): Observable<Ability>{
-    return this.http.get<Ability>(environment.POKE_API + constant.abilityContent + id.toString()).pipe(
+  getAbility(value : string): Observable<Ability>{
+    return this.http.get<Ability>(environment.POKE_API + constant.abilityContent + value).pipe(
       map(data => new Ability(data))
     );
   };

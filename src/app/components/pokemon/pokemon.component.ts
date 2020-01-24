@@ -51,6 +51,10 @@ export class PokemonComponent implements OnInit {
     this.router.navigate(['/pokemon/', this.search.value]);
   }
 
+  goTo(name:string){
+    this.router.navigate(['/ability/',name]);
+  }
+
   // getPokemon(): void {
   //   this.pokemonService.getPokemonId(this.poke_id).subscribe(data => this.pokemon = data);
   // }
