@@ -5,6 +5,9 @@ import { PokemonRoutingModule } from './pokemon-routing.module';
 import { PokemonComponent } from '../../components/pokemon/pokemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     PokemonRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class PokemonModule { }

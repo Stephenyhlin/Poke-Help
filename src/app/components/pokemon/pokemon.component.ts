@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../Models/pokemon';
-import { Sprites } from '../../Models/sprites';
+// import { Sprites } from '../../Models/sprites';
 import { PokemonService } from '../../services/pokemon.service';
 import { FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap, take, first, catchError, tap } from 'rxjs/operators';
+import { switchMap, take, first, catchError, tap, map, startWith } from 'rxjs/operators';
 import { environment } from 'src/app/environments/environment';
 import { constant } from 'src/app/Models/constant';
 import { Observable, throwError } from 'rxjs';
+import { AutoCompleteService } from 'src/app/services/auto-complete.service';
 
 @Component({
   selector: 'app-pokemon',
@@ -16,20 +17,45 @@ import { Observable, throwError } from 'rxjs';
 })
 export class PokemonComponent implements OnInit {
   pokemon$: Observable<Pokemon>;
-
+  name$ : Observable<string[]>;
+  option;
   pokemon: Pokemon;
-  search = new FormControl('Enter a pokemon name');
+  search = new FormControl('');
   poke_id: number;
   poke_name: String;
 
   constructor(
     private pokemonService: PokemonService,
+    private aService : AutoCompleteService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     // this.getPokemon();
+    this.aService.setContent(constant.pokemonContentAPI);
+    // this.aService.getAll().subscribe((allPokemon : string[]) => {
+    //   this.option = allPokemon;
+    //   this.name$ = this.search.valueChanges.pipe(
+    //     startWith(''),
+    //     map(value => this.aService._filter(value, this.option))
+    //   )
+    // });
+    this.name$ = this.aService.getAll().pipe(
+      tap((allPokemon : string[]) => {
+          this.option = allPokemon;
+          this.name$ = this.search.valueChanges.pipe(
+            //This is to ensure that every time we update a value, it will update and check
+            startWith(''),
+            map(value => this.aService._filter(value, this.option))
+          )
+        }
+
+      )
+    )
+    console.log(this.option);
+
     this.route.params.subscribe((params) => {
       if (params['param']) {
         // If it exists we will set it as our pokemon name. Pokemon name will always be the output

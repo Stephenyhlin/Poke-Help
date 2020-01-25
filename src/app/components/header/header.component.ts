@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { constant } from 'src/app/Models/constant';
 
 @Component({
   selector: 'app-header',
@@ -19,16 +20,16 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([""]);
   }
 
-  // goPokemon(){
-  //   this.router.navigate(["/pokemon/"]);
-  // }
+  goPokemon(){
+    this.router.navigate([constant.pokemonContent]);
+  }
 
   goAbility(){
-    this.router.navigate(["/ability/"]);
+    this.router.navigate([constant.abilityContent]);
   }
 
   goMove(){
-    this.router.navigate(["/moves/","1"]);
+    this.router.navigate([constant.moveContent,"1"]);
   }
 
 }
