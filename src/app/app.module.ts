@@ -20,6 +20,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { ReplacePipe } from './pipes/replace.pipe';
 import { ReplaceWithspacePipe } from './pipes/replace-withspace.pipe';
 import { SharedModule } from './modules/shared/shared.module';
+import { ScrollComponent } from './components/scroll/scroll.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SharedModule } from './modules/shared/shared.module';
     DashboardComponent,
     HeaderComponent,
     ErrorPageComponent,
-    ReplacePipe
+    ReplacePipe,
+    ScrollComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

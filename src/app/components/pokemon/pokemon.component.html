@@ -25,7 +25,7 @@
 <div *ngIf="pokemon$ | async as pokemon1">
     <p>{{pokemon1.id }}</p>
     <p>{{pokemon1.name | titlecase}}</p>
-    <img src = {{pokemon1.sprites.back_default}}>
+    <img src = {{pokemon1.sprites.front_default}}>
     <p >{{pokemon1.height}}</p>
     <ng-container *ngFor="let array of pokemon1.ability" >
         <a (click) = "goTo(array.ability.name, '/ability/')">{{array.ability.name |titlecase |replaceWithspace}}</a>
