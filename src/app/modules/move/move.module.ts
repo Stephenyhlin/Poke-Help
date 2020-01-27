@@ -5,6 +5,9 @@ import { MoveRoutingModule } from './move-routing.module';
 import { MovesComponent } from '../../components/moves/moves.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MoveRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class MoveModule { }

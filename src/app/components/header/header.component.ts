@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goMove(){
-    this.router.navigate([constant.moveContent,"1"]);
+    this.router.navigate([constant.moveContent]);
   }
 
 }

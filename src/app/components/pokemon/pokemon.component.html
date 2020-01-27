@@ -1,15 +1,16 @@
 <mat-form-field>
-    <input type="text" placeholder="Enter Pokemon Name or ID" matInput [formControl] ="search" (keyup.enter)="searchPoke()" (keydown.arrowright) = "onRight()"
-    (keyup.arrowleft) = "onLeft()" [matAutocomplete]="auto">
+    <input type="text" placeholder="Enter Pokemon Name or ID" matInput [formControl]="search"
+        (keyup.enter)="searchPoke()" (keydown.arrowright)="onRight()" (keyup.arrowleft)="onLeft()"
+        [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of name$ | async" [value]="option">
-                {{ option }}
-            </mat-option>
-        </mat-autocomplete>
+        <mat-option *ngFor="let option of name$ | async" [value]="option">
+            {{ option }}
+        </mat-option>
+    </mat-autocomplete>
 </mat-form-field>
 
 
-      
+
 
 <!-- <div class="input">
     <label>
@@ -25,21 +26,24 @@
 <div *ngIf="pokemon$ | async as pokemon1">
     <p>{{pokemon1.id }}</p>
     <p>{{pokemon1.name | titlecase}}</p>
-    <img src = {{pokemon1.sprites.front_default}}>
-    <p >{{pokemon1.height}}</p>
-    <ng-container *ngFor="let array of pokemon1.ability" >
-        <a (click) = "goTo(array.ability.name, '/ability/')">{{array.ability.name |titlecase |replaceWithspace}}</a>
+    <img src={{pokemon1.sprites.front_default}}>
+    <!-- <p >{{pokemon1.height}}</p> -->
+    <ng-container *ngFor="let array of pokemon1.ability">
+        <div>
+            <a (click)="goTo(array.ability.name, '/ability/')">{{array.ability.name |titlecase |replaceWithspace}}</a>
+        </div>
+
     </ng-container>
     <div>
         <p> Moves</p>
         <ng-container *ngFor="let array of pokemon1.moves">
             <li>
-                <a (click) = "goTo(array.move.name, '/moves/')">{{array.move.name | titlecase | replaceWithspace}}</a>  
+                <a (click)="goTo(array.move.name, '/moves/')">{{array.move.name | titlecase | replaceWithspace}}</a>
             </li>
-              
+
         </ng-container>
     </div>
-    
+
 
 </div>
 

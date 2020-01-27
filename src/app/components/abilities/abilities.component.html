@@ -1,11 +1,24 @@
-<div class="input">
+<mat-form-field>
+    <input type="text" placeholder="Enter Ability Name or ID" matInput [formControl]="search"
+        (keyup.enter)="searchAb()" (keydown.arrowright)="onRight()" (keyup.arrowleft)="onLeft()"
+        [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of name$ | async" [value]="option">
+            {{ option }}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+
+
+<!-- <div class="input">
     <label>
         <input type="text" [formControl] ="search" (keyup.enter)="searchAb()"
         >
         <button (click)="searchAb()">Search</button>
     </label>
 
-</div>
+</div> -->
 
 
 <div *ngIf="ability$ | async as ability1">
