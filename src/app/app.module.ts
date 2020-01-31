@@ -46,6 +46,7 @@ import { InfiniteScrollModule} from 'ngx-infinite-scroll';
     ReactiveFormsModule,
     ScrollingModule,
     InfiniteScrollModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
