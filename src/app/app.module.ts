@@ -22,6 +22,7 @@ import { ReplaceWithspacePipe } from './pipes/replace-withspace.pipe';
 import { SharedModule } from './modules/shared/shared.module';
 import { ScrollComponent } from './components/scroll/scroll.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     BrowserAnimationsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

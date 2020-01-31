@@ -1,7 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" 
+          href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="search-results"
+            infiniteScroll
+            [infiniteScrollDistance] = "2"
+            [horizontal] = "true"
+            [scrollWindow] = "false"
+            [infiniteScrollThrottle] = "50"
+            (scrolled) = "onScroll()"
+        >
+            <div class="row flex-row flex-nowrap">
+                <div class="col-3" *ngFor="let pokemon of cachedF">
+                     <div class="card shadow">
+                        <div class="card-body">
+                        <h5 class="card-title text-center" >{{pokemon.name}}</h5>
+                        <a>{{pokemon.url}}</a>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!-- 
 <div id="container">
 
 
-    <p> Gonna try to implement side scrolling display of some pokemon and abilities</p>
+    <p> Gonna try to implement side scrolling display of some pokemon and abilities</p> -->
 
     <!-- <div id = "block">
         <nav>
@@ -10,9 +47,9 @@
         
     </div> -->
     
-    <div id = "block">
+    <!-- <div id = "block">
             hi
         </div>
         
 
-</div>
+</div> -->

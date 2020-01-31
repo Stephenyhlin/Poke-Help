@@ -45,7 +45,8 @@ export class PokemonComponent implements OnInit {
     this.name$ = this.aService.getAll().pipe(
       tap((allPokemon : string[]) => {
           this.option = allPokemon;
-          this.name$ = this.search.valueChanges.pipe(
+          //This is to ensure that as we type the displayed name array is different
+          this.name$=this.search.valueChanges.pipe(
             //This is to ensure that every time we update a value, it will update and check
             startWith(''),
             map(value => this.aService._filter(value, this.option))

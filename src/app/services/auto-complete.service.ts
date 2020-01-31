@@ -21,6 +21,7 @@ export class AutoCompleteService {
         for(let array of data['results']){
           returnArray.push(this.updateName(array['name']));
         }
+        //Returns the sorted array
         return returnArray.sort();
       }
     ));

@@ -16,3 +16,31 @@ nav a {
   nav a.active {
     color: #039be5;
   }
+
+  row > .col-xs-3 {
+    display:inline-flex;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.flex-nowrap {
+    -webkit-flex-wrap: nowrap!important;
+    -ms-flex-wrap: nowrap!important;
+    flex-wrap: nowrap!important;
+    
+}
+.flex-row {
+    display:flex;
+    -webkit-box-orient: horizontal!important;
+    -webkit-box-direction: normal!important;
+    -webkit-flex-direction: row!important;
+    -ms-flex-direction: row!important;
+    flex-direction: row!important;
+    
+}
+
+.search-results{
+    height:100vh;
+    min-width: 100px;
+    overflow-y: scroll;
+}

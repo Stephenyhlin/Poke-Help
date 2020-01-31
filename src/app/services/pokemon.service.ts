@@ -15,6 +15,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class PokemonService {
   pokemon: Pokemon;
+  next: string;
 
   constructor(
     private http: HttpClient,
@@ -33,6 +34,19 @@ export class PokemonService {
       .pipe(
         map(data => (new Pokemon(data))),
       );
+  }
+
+  getSomePokemon(url: string): Observable<string[]>{
+    let array = [];
+    return this.http.get(url).pipe(map(data => {
+      for(let pokemon of data['results']){
+        array.push(pokemon);
+      }
+      this.next = data['next'];
+      return array;
+    }))
+
+
   }
 
   // .pipe(map(data => (new Pokemon())))
