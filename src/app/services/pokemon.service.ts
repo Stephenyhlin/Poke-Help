@@ -16,17 +16,19 @@ import { map, catchError } from 'rxjs/operators';
 export class PokemonService {
   pokemon: Pokemon;
   next: string;
+  public id: string[] = [];
 
   constructor(
     private http: HttpClient,
   ) { }
 
   // Create the get for pokemon information
-  getPokemonId(id: number): Observable<Pokemon> {
-    return this.http.get<Pokemon>(environment.POKE_API + constant.pokemonContentAPI + id.toString())
-      .pipe(
-        map(data => (new Pokemon(data)))
-      );
+  parseID(url:string): string{
+    let regex = new RegExp(environment.POKE_API+constant.pokemonContentAPI,'g');
+    let temp: string;
+    temp =url.replace(regex,'/');
+    let reg = new RegExp('/','g');
+    return temp.replace(reg,'');
   }
 
   getPokemonName(name: String): Observable<Pokemon> {
@@ -36,11 +38,16 @@ export class PokemonService {
       );
   }
 
-  getSomePokemon(url: string): Observable<string[]>{
+  getSomePokemon(url: string): Observable<any[]>{
     let array = [];
+    let temp: any;
     return this.http.get(url).pipe(map(data => {
       for(let pokemon of data['results']){
-        array.push(pokemon);
+        temp = pokemon;
+        temp.url = environment.SPRITE + constant.pokemonContentAPI+this.parseID(temp.url)+'.png';
+        array.push(temp);
+        // console.log(temp.url);
+        // this.id.push((this.parseID(pokemon.url)));
       }
       this.next = data['next'];
       return array;

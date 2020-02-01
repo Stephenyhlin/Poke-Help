@@ -10,7 +10,7 @@ export class Pokemon{
     ability: any[];
     moves: any[];
     // ab_url: string[];
-    // If i want I can yolo blaze the constructor
+    
     constructor( data:any){
         this.id = data.id;
         this.name = data.name;
@@ -28,7 +28,7 @@ export class Pokemon{
 
     getArrayValues(data:any[]) : any[] {
         let array = [];
-        let reg = new RegExp(environment.POKE_API,'g')
+        // let reg = new RegExp(environment.POKE_API,'g')
         data.forEach(function(element){
             array.push(element);
         });

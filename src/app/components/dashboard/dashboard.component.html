@@ -23,8 +23,12 @@
                 <div class="col-3" *ngFor="let pokemon of cachedF">
                      <div class="card shadow">
                         <div class="card-body">
-                        <h5 class="card-title text-center" >{{pokemon.name |titlecase |replaceWithspace}}</h5>
-                        <a>{{pokemon.url}}</a>        
+                            <div>
+                                <a class="card-title text-center" >{{pokemon.name|replaceWithspace |titlecase}}</a>
+                            </div>
+                        
+                        <img src={{pokemon.url}}>
+                        <!-- <a>{{pokemon.url}}</a>         -->
                         </div>
                     </div>
                 </div>
