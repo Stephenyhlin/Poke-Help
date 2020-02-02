@@ -49,6 +49,6 @@ import { InfiniteScrollModule} from 'ngx-infinite-scroll';
     SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,HeaderComponent]
 })
 export class AppModule { }

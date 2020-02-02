@@ -1,4 +1,4 @@
-nav a {
+/* nav a {
     padding: 5px 10px;
     text-decoration: none;
     margin-top: 10px;
@@ -15,12 +15,27 @@ nav a {
   }
   nav a.active {
     color: #039be5;
-  }
+  } */
 
-  row > .col-xs-3 {
+  row > .col-xs {
     display:inline-flex;
     flex: 0 0 25%;
     max-width: 25%;
+}
+
+body{
+  background: #D9D9D9;
+  /* background: #525252; */
+}
+
+
+.card-body:hover{
+  background: #E3E3E3;
+
+}
+.card-body{
+  background: #F2F2F2;
+  height: 150px;
 }
 
 .flex-nowrap {
@@ -40,7 +55,42 @@ nav a {
 }
 
 .search-results{
-    height:100vh;
     min-width: 100px;
     overflow-y: scroll;
+}
+
+/* Pokemon image */
+.pokemon-image-container{
+  text-align: center;
+}
+
+.pokemon-image{
+  display: inline-flex;
+}
+
+
+/* For the pokemon name that is being displayed. I want to do something that when you hover, the entire block pops out a little more */
+.pokemon-name-container{
+  text-align: center;
+}
+
+.pokemon-name{
+  display: inline-flex;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* For the headings */
+*{
+  font-family: Tahoma, Geneva, sans-serif;
+font-size: 16px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #000000;
+font-weight: 400;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
 }

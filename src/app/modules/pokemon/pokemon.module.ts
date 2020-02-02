@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule
-  ]
+  ],
+  bootstrap: [PokemonComponent]
 })
 export class PokemonModule { }

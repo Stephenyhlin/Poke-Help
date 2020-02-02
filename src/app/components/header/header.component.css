@@ -1,20 +1,55 @@
-a:hover {
+/* a:hover {
     color: #039be5;
-}
-a{
+} */
+/* a{
     float: left;
     display: block;
     padding: 14px 16px;
-}
+} */
 
-.box .home{
+/* .box{
     color: #000000;
+    min-width: 10%;
 }
-.box .home:hover{
-    color: #039be5;
+span:hover{
+    background: #039be5;
+} */
+
+/* .box-container >span{
+    -webkit-box-shadow: 0px 7px 14px 3px rgba(0,0,0,0.22); 
+    box-shadow: 0px 7px 14px 3px rgba(0,0,0,0.22);
+    min-width: 10%;
+} */
+.right-side{
+    float:right;
 }
 
-.toolbar {
-    background-color: #fd0f0f;
-    overflow: hidden;
+.navbar-header{
+    width:100%;
 }
+
+.btn{
+    background: #90A4AE;
+    border-color: #90A4AE;
+}
+
+.navbar {
+    background: #90A4AE;
+    /* overflow: hidden; */
+    margin-bottom: 0;
+    justify-content: left;
+}
+
+/* For the headings */
+*{
+    font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }
