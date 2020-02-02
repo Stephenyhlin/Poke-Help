@@ -8,7 +8,6 @@ import { constant } from 'src/app/Models/constant';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // private LOGO = require("../../assets/img/github.png");
 
   constructor(
     private router: Router

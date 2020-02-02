@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
         this.cachedF = this.cachedF.concat(data);
         // this.id = this.pService.id;
         this.next = this.pService.next;
-        console.log(this.id);
+        // console.log(this.id);
       }
     ) 
     
