@@ -29,12 +29,13 @@ span:hover{
 }
 
 .btn{
-    background: #90A4AE;
-    border-color: #90A4AE;
+    background: #2E8FFF;
+    border-color: #2E8FFF;
+    /* color: #FFFFFF; */
 }
 
 .navbar {
-    background: #90A4AE;
+    background: #2E8FFF;
     /* overflow: hidden; */
     margin-bottom: 0;
     justify-content: left;

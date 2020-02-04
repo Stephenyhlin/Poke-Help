@@ -9,6 +9,7 @@ export const constant = {
     moves: 'moves',
     moveContentAPI: 'move/',
     moveContent : '/moves/',
-    error: '/error'
+    error: '/error',
+    moreDataAPI: 'pokemon-species/'
     
 }

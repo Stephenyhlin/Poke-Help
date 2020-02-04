@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from '../Models/pokemon';
+import { Pokemon, MoreData } from '../Models/pokemon';
 import { Sprites } from '../Models/sprites';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
@@ -36,6 +36,12 @@ export class PokemonService {
       .pipe(
         map(data => (new Pokemon(data))),
       );
+  }
+
+  getMoreData(name: String): Observable<MoreData>{
+    return this.http.get<MoreData>(environment.POKE_API +constant.moreDataAPI + name).pipe(
+      map(data => (new MoreData(data)))
+    );
   }
 
   getSomePokemon(url: string): Observable<any[]>{

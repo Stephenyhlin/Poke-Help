@@ -1,0 +1,66 @@
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titlename{
+    font-size: 24px;
+    font-weight: 700;;
+}
+
+#pokemon-summary{
+    width: 20%;
+    background: #D9D9D9;
+}
+
+.card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scrollable{
+    overflow-y:scroll;
+    width: 100%;
+}
+
+#flavor-text, #moves{
+    width: calc(100% - 40%);
+    background: #D9D9D9;
+    height: 300px;
+}
+
+#ability{
+    width: 15%;
+}
+
+body{
+    background: #D9D9D9;
+}
+.split{
+    margin-top:10px;
+    border:#000000 medium solid;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#stats{
+    font-size: 12px;
+}
+
+*{
+    font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  }

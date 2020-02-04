@@ -9,6 +9,7 @@ export class Pokemon{
     height: number;
     ability: any[];
     moves: any[];
+    stat: any[];
     // ab_url: string[];
     
     constructor( data:any){
@@ -23,6 +24,7 @@ export class Pokemon{
         this.ability = this.getArrayValues(data.abilities);
         // this.ab_url = this.getABUrl(data.abilities);
         this.moves = this.getArrayValues(data.moves);
+        this.stat = this.getArrayValues(data.stats);
         
     }
 
@@ -41,4 +43,21 @@ export class Pokemon{
     //     })
     //     return array;
     // }
+}
+
+export class MoreData{
+    flavor_text: any[]
+
+    constructor(data:any){
+        this.flavor_text = this.getArrayValues(data.flavor_text_entries);
+    }
+
+    getArrayValues(data:any[]) : any[] {
+        let array = [];
+        // let reg = new RegExp(environment.POKE_API,'g')
+        data.forEach(function(element){
+            array.push(element);
+        });
+        return array;
+    }
 }

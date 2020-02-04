@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../../Models/pokemon';
+import { Pokemon, MoreData } from '../../Models/pokemon';
 // import { Sprites } from '../../Models/sprites';
 import { PokemonService } from '../../services/pokemon.service';
 import { FormControl } from '@angular/forms';
@@ -23,6 +23,7 @@ export class PokemonComponent implements OnInit {
   search = new FormControl('');
   poke_id: number;
   poke_name: String;
+  moreData$: Observable<MoreData>;
 
   constructor(
     private pokemonService: PokemonService,
@@ -55,7 +56,7 @@ export class PokemonComponent implements OnInit {
 
       )
     )
-    console.log(this.option);
+    // console.log(this.option);
 
     this.route.params.subscribe((params) => {
       if (params['param']) {
@@ -63,6 +64,7 @@ export class PokemonComponent implements OnInit {
         this.poke_name = params['param'];
         this.poke_name = this.poke_name.split(' ').join('-');
         this.getPokemonName();
+        this.getMoreData();
       }
     })
   }
@@ -86,6 +88,14 @@ export class PokemonComponent implements OnInit {
   //   this.pokemonService.getPokemonId(this.poke_id).subscribe(data => this.pokemon = data);
   // }
 
+  getMoreData(): void{
+    this.moreData$ = this.pokemonService.getMoreData(this.poke_name.toLowerCase()).pipe(
+      catchError((err:Response) => {
+        this.router.navigate(['/error', constant.pokemon]);
+        return throwError('404');
+      })
+    )
+  }
   getPokemonName(): void {
     this.pokemon$ = this.pokemonService.getPokemonName(this.poke_name.toLowerCase()).pipe(
       tap(pkmn => {
@@ -98,6 +108,7 @@ export class PokemonComponent implements OnInit {
     }
     )
    );
+   
 
     // this.pokemon$.
     // .subscribe(data => {
@@ -116,9 +127,8 @@ export class PokemonComponent implements OnInit {
     //   this.search.setValue(this.poke_name);
     // }); Anything commented was my old naive code.
   }
+  
+  
 
-  ngOnDelete(){
-
-  }
 
 }
