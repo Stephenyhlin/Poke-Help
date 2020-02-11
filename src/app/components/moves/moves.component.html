@@ -1,1 +1,27 @@
-<p>moves works!</p>
+<mat-form-field>
+    <input type="text" placeholder="Enter Move Name or ID" matInput [formControl] ="search" (keyup.enter)="searchM()" (keydown.arrowright) = "onRight()"
+    (keyup.arrowleft) = "onLeft()" [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of name$ | async" [value]="option">
+                {{ option }}
+            </mat-option>
+        </mat-autocomplete>
+</mat-form-field>
+
+
+<!-- 
+<div class="input">
+    <label>
+        <input type="text" [formControl] ="search" (keyup.enter)="searchM()"
+        >
+        <button (click)="searchM()">Search</button>
+    </label>
+
+</div>
+ -->
+
+<div *ngIf="move$ | async as move">
+    <p>{{move.getName() | titlecase | replaceWithspace}}</p>
+    <p>{{move.getEffectFlavor()}}</p>
+
+</div>

@@ -1,12 +1,23 @@
-<div class="toolbar">
-    <div class="box">
-        <a class="home" (click) = "goHome()">PokeHelp</a>
-    </div>
-    
-    <div class="box">
-        <a (click) = "goPokemon()"> Pokemon</a>
-    </div>
-    
-    
+<nav class="navbar navbar-default" role="navigation">
+    <!-- <div class="box-container"> -->
+        <div class="navbar-header">
+            <a type="button" class="btn btn-default navbar-btn" (click) = "goHome()">
+                    <span class="glyphicon glyphicon-home"></span>PokeHelp</a>
+        
+            <a type="button" class="btn btn-default navbar-btn" (click) = "goPokemon()">Pokemon</a>
+        
+            <a type="button" class="btn btn-default navbar-btn" (click) = "goAbility()">Ability</a>
+        
+            <a type="button" class="btn btn-default navbar-btn" (click) = "goMove()">Move</a>
+        
+        <!-- <span class="nav-item"(click) = "goPokemon()"> Pokemon</span> -->
+        <!-- <span (click) = "goAbility()"> Ability</span> -->
+        <!-- <span (click) = "goMove()"> Move</span> -->
+    <!-- </div> -->
+            <a type="button" class="btn btn-default navbar-btn right-side" href="https://github.com/SteveMunch01/Poke-Help">
+                <img src= "../../../assets/img/github.png">
+            </a>
+        </div>
+        
+</nav>
 
-</div>

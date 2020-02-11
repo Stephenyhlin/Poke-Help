@@ -1,1 +1,44 @@
-<p>abilities works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" 
+          href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+</head>
+
+<body>
+<mat-form-field>
+    <input type="text" placeholder="Enter Ability Name or ID" matInput [formControl]="search"
+        (keyup.enter)="searchAb()" (keydown.arrowright)="onRight()" (keyup.arrowleft)="onLeft()"
+        [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of name$ | async" [value]="option">
+            {{ option }}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+
+</body>
+
+
+
+
+<!-- <div class="input">
+    <label>
+        <input type="text" [formControl] ="search" (keyup.enter)="searchAb()"
+        >
+        <button (click)="searchAb()">Search</button>
+    </label>
+
+</div> -->
+
+
+<div *ngIf="ability$ | async as ability1">
+    <p>{{ability1.getName() | titlecase}}</p>
+    <p>{{ability1.getEffect()}}</p>
+
+</div>
