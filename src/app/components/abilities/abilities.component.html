@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" 
-          href= 
-"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-</head>
-
 <body>
 <mat-form-field>
     <input type="text" placeholder="Enter Ability Name or ID" matInput [formControl]="search"
@@ -20,8 +9,6 @@
         </mat-option>
     </mat-autocomplete>
 </mat-form-field>
-
-
 </body>
 
 
@@ -40,5 +27,4 @@
 <div *ngIf="ability$ | async as ability1">
     <p>{{ability1.getName() | titlecase}}</p>
     <p>{{ability1.getEffect()}}</p>
-
 </div>

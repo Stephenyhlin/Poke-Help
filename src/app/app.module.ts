@@ -20,7 +20,6 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { ReplacePipe } from './pipes/replace.pipe';
 import { ReplaceWithspacePipe } from './pipes/replace-withspace.pipe';
 import { SharedModule } from './modules/shared/shared.module';
-import { ScrollComponent } from './components/scroll/scroll.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { InfiniteScrollModule} from 'ngx-infinite-scroll';
 
@@ -35,7 +34,6 @@ import { InfiniteScrollModule} from 'ngx-infinite-scroll';
     HeaderComponent,
     ErrorPageComponent,
     ReplacePipe,
-    ScrollComponent
   ],
   imports: [
     BrowserModule,
