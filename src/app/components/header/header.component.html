@@ -1,18 +1,37 @@
-<nav class="navbar navbar-default" role="navigation">
-    <!-- <div class="box-container"> -->
-        <div class="navbar-header">
-            <a type="button" class="btn navbar-btn" (click) = "goHome()">
-                    <span class="glyphicon glyphicon-home"></span>PokeHelp</a>
-        
-            <a type="button" class="btn navbar-btn right-side" href="https://github.com/SteveMunch01/Poke-Help">
-                <i class="devicon-github-plain"></i>
-            </a>
-        
-            <a type="button" class="btn navbar-btn right-side" (click) = "goMove()">Move</a>
-      
-            <a type="button" class="btn navbar-btn right-side" (click) = "goAbility()">Ability</a>
-    
-            <a type="button" class="btn navbar-btn right-side" (click) = "goPokemon()">Pokemon</a>
-        
-        </div>
+<nav class="navbar navbar-expand-lg w-100 sticky-top rounded-bottom" role="navigation">
+  <!-- <div class="box-container"> -->
+  <a class="navbar-brand header-path" (click)="goHome()">PokeHelp</a>
+  <button
+    class="navbar-toggler custom-toggler ml-auto"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mx-1">
+        <a class="navbar-link header-path" (click)="goPokemon()">Pokemon</a>
+      </li>
+      <li class="nav-item mx-1">
+        <a class="navbar-link header-path" (click)="goAbility()">Ability</a>
+      </li>
+      <li class="nav-item mx-1">
+        <a class="navbar-link header-path" (click)="goMove()">Move</a>
+      </li>
+      <li class="nav-item mx-1">
+        <a
+          class="navbar-link header-path"
+          href="https://github.com/SteveMunch01/Poke-Help"
+        >
+          <i class="devicon-github-plain"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
