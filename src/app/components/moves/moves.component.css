@@ -1,0 +1,16 @@
+.back-display {
+  background: #f25757;
+}
+
+.pokedex-upper {
+  min-height: 10vh;
+}
+
+.top-box,
+.lower-box {
+  background: #dd2d4a;
+}
+
+.top-box {
+  height: 50px;
+}
