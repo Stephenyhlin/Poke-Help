@@ -1,3 +1,10 @@
 <svg>
-  <circle cx="50%" cy="50%" r="10" stroke="blue" stroke-width="1" fill="blue" />  
-</svg> 
+          <circle
+            cx="25%"
+            cy="30%"
+            r="15"
+            stroke="#4062BB"
+            stroke-width="1"
+            fill="#4062BB"
+          />
+        </svg>

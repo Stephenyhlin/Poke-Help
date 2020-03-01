@@ -1,32 +1,67 @@
-<div class="container-fluid m-0 p-0 w-100 d-flex flex-column back-display h-100">
-  <div class="pokedex-upper w-100">
-    <div class="top-box w-100"></div>
-    <div class="lower-box w-50">
-      <embed src="/assets/svg/circle.svg" />
+<div
+  class="container-fluid m-0 p-0 w-100 d-flex flex-column back-display h-100"
+>
+  <div class="row row-cols-2 pokedex-upper">
+    <div class="col">
+      <svg>
+        <circle
+          cx="25%"
+          cy="50%"
+          r="15"
+          stroke="#4062BB"
+          stroke-width="1"
+          fill="#4062BB"
+        />
+      </svg>
+    </div>
+    <div class="col">
+      <div class="row" id="rectangle"></div>
+      <div class="row" id="triangle-topleft"></div>
     </div>
   </div>
-  <div class="pokdex-Inner w-100 d-flex flew-grow-1">
-    <div class="w-50">
-      <p>hi</p>
+
+  <div class="pokdex-Inner w-100 d-flex flex-grow-1 border-right">
+    <div class="w-50 d-flex flex-column flex-grow-1 border-right">
+      <!-- This is my left pokedex -->
+      <div class="w-50 image-container center my-5">
+      </div>
+
+      <div class= "w-50 name-container center my-5"></div>
+      <div class= "w-50 name-container center"></div>
     </div>
-    <div class="w-50">
-      <mat-form-field>
-        <input
-          type="text"
-          placeholder="Enter Move Name or ID"
-          matInput
-          [formControl]="search"
-          (keyup.enter)="searchM()"
-          (keydown.arrowright)="onRight()"
-          (keyup.arrowleft)="onLeft()"
-          [matAutocomplete]="auto"
-        />
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of name$ | async" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+    <div class="w-50 flex-grow-1 d-flex flex-column border-left">
+      <!-- This is my right pokedex -->
+      <div class= "w-50 d-flex center name-container my-5 justify-content-center">
+        <mat-form-field>
+          <input
+            type="text"
+            placeholder="Enter Move Name or ID"
+            matInput
+            [formControl]="search"
+            (keyup.enter)="searchM()"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of name$ | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div class="w-50 text-container center my-5 overflow-scroll">
+        <div *ngIf="move$ | async as move">
+          <p>{{ move.getName() | titlecase | replaceWithspace }}</p>
+          <p>{{ move.getEffectFlavor() }}</p>
+        </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center">
+        <div class="w-50 d-flex justify-content-between">
+          <button> yo</button>
+          <button> Mama</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
