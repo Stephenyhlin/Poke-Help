@@ -8,10 +8,16 @@ export class Move {
     meta: any[];
     effect_chance: number;
     flavor: string;
+    flavor_text: string;
+    type: string;
 
     constructor(data: any) {
         this.accuracy = data.accuracy;
-        this.name = data.name;
+        data.names.forEach(element => {
+            if(element.language.name==="en"){
+                this.name = element.name;
+            }
+        })
         this.id = data.id;
         this.effect = data.effect_entries;
         this.effect_chance = data.effect_chance;
@@ -19,7 +25,19 @@ export class Move {
         this.pp = data.pp;
         this.meta = data.meta;
 
+        this.type = data.type.name;
+
+        this.setFlavorText(data);
+
         this.replaceEffectFlavor();
+    }
+
+    private setFlavorText(data:any) {
+        data.flavor_text_entries.forEach(element => {
+            if(element.language.name==="en" && element.version_group.name==="sun-moon"){
+                this.flavor_text = element.flavor_text;
+            }         
+        });
     }
 
     getEffectFlavor(): string {
@@ -46,6 +64,7 @@ export class Move {
     }
 
     replaceEffectFlavor() {
+
         this.flavor = this.effect[0].effect;
         if (this.flavor.includes('$effect_chance')) {
             this.flavor = this.flavor.split('$effect_chance').join(this.effect_chance.toString());

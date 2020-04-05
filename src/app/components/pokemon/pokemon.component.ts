@@ -74,7 +74,9 @@ export class PokemonComponent implements OnInit {
   }
 
   onLeft() {
-    this.router.navigate(['/pokemon/', this.poke_id - 1]);
+    if(!(this.poke_id === 1)){
+      this.router.navigate(['/pokemon/', this.poke_id - 1]);
+    }
   }
   searchPoke(): void {
     this.router.navigate(['/pokemon/', this.search.value]);

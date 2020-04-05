@@ -1,77 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-</head> -->
-<body>
-    <div>
-        <p>FUCK MY LIFE</p>
-    </div>
-
-    <div class="container-fluid">
-        <div class="heading">
-            <h2 class="heading-name">Pokemon</h2>
+<div
+    class="container-fluid m-0 p-0 w-100 d-flex flex-column back-display h-100"
+    >
+    <div class="row w-100 pokedex-upper mx-0">
+        <div class="col">
+        <svg>
+            <circle
+            cx="25%"
+            cy="50%"
+            r="15"
+            stroke="#4062BB"
+            stroke-width="1"
+            fill="#4062BB"
+            />
+        </svg>
         </div>
-        <div class="search-results"
-            infiniteScroll
-            [infiniteScrollDistance] = "2"
-            [horizontal] = "true"
-            [scrollWindow] = "false"
-            [infiniteScrollThrottle] = "50"
-            (scrolled) = "onScroll()"
-        >
-            <div class="row flex-row flex-nowrap">
-                <div class="col-3" *ngFor="let pokemon of cachedF">
-                     <div class="card shadow">
-                        <div class="card-body">
-                            <div class="pokemon-name-container">
-                                <h5 class="pokemon-name" >{{pokemon.name|replaceWithspace |titlecase}}</h5>
-                            </div>
-                        <div class="pokemon-image-container">
-                            <img src={{pokemon.url}} class="pokemon-image">
-                        </div>
-                        
-                        <!-- <a>{{pokemon.url}}</a>         -->
-                        </div>
+        <div class="col">
+            <div class="w-100" id="rectangle"></div>
+            <div class="w-100" id="triangle-topleft"></div>
+        </div>
+    </div>
+    
+<br>
+
+<div class="mx-2 row" >
+    <h5>Welcome to PokeHelp</h5>
+    <p>This website was my first attempt at learning Angular. The goal was to be able to create a website 
+        that would allow others to be able to get all the Pokemon information they need.
+    </p>
+
+    <p> If you know what Pokemon/Ability/Move you are looking for, please use the navigation bar to search.
+        Else if you just want to kill some time, please scroll through the module below until you see a Pokemon you like.
+
+    </p>
+
+</div>
+
+<div class="search-results mx-2"
+    infiniteScroll
+    [infiniteScrollDistance] = "2"
+    [horizontal] = "true"
+    [scrollWindow] = "false"
+    [infiniteScrollThrottle] = "50"
+    (scrolled) = "onScroll()"
+>
+    <div class="row flex-row flex-nowrap">
+        <div class="col-3" *ngFor="let pokemon of cachedF">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="pokemon-name-container">
+                        <h5 class="pokemon-name" >{{pokemon.name|replaceWithspace |titlecase}}</h5>
                     </div>
+                <div class="pokemon-image-container">
+                    <img *ngIf="pokemon.url" src={{pokemon.url}} class="pokemon-image">
                 </div>
             </div>
-        </div>
-
-        <div>
-            <p> For Moves</p>
-        </div>
-
-        <div>
-            <p> For Abilities</p>
-        </div>
-
-        <div>
-            <p> For Items</p>
+            </div>
         </div>
     </div>
-</body>
+</div>
 
 
-<!-- 
-<div id="container">
 
 
-    <p> Gonna try to implement side scrolling display of some pokemon and abilities</p> -->
-
-    <!-- <div id = "block">
-        <nav>
-            <a (click) = "goHome()">Click me</a>
-        </nav>
-        
-    </div> -->
-    
-    <!-- <div id = "block">
-            hi
-        </div>
-        
-
-</div> -->

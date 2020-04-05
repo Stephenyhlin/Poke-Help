@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private pService: PokemonService
   ) { }
-  private cachedF = Array.from<string>({length:0});
+  public cachedF = Array.from<string>({length:0});
   private id: string[];
   // private cachedF$: Observable<Pokemon[]>;
   private next: string;

@@ -1,0 +1,81 @@
+.back-display {
+  background: #f25757;
+}
+
+.pokedex-upper {
+  min-height: 100px;
+}
+
+.col {
+  background: #dd2d4a;
+}
+
+.border-right {
+  border-right-color: #dd2d4a !important;
+  border-right-width: 2px !important;
+}
+
+.border-left {
+  border-left-color: #dd2d4a !important;
+  border-left-width: 1px !important;
+}
+
+.top-box {
+  height: 50px;
+}
+
+.image-container {
+  height: 300px;
+  background: #BBDEF0;
+}
+
+mat-form-field {
+  width: 100%;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.text-container {
+  height: 300px;
+  background: #51CB20;
+}
+
+.name-container {
+  height: 50px;
+  background: #51CB20;
+}
+
+.search-container {
+  height: 50px;
+  background: #BBDEF0;
+}
+
+.scrollable {
+  overflow-y: scroll;
+}
+
+.center {
+  align-self: center;
+  justify-self: center;
+}
+svg {
+  height: 10vh;
+}
+
+#rectangle {
+  height: 45px;
+}
+
+#triangle-topleft {
+  border-bottom: 55px solid #f25757;
+  border-left: 50px solid #dd2d4a;
+}
+
+button {
+  background: #EEE82C;
+  border-color: #EEE82C;
+}
+
+a:hover{
+  cursor: pointer;
+}

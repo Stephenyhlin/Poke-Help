@@ -1,56 +1,32 @@
-/* a:hover {
-    color: #039be5;
-} */
-/* a{
-    float: left;
-    display: block;
-    padding: 14px 16px;
-} */
-
-/* .box{
-    color: #000000;
-    min-width: 10%;
-}
-span:hover{
-    background: #039be5;
-} */
-
-/* .box-container >span{
-    -webkit-box-shadow: 0px 7px 14px 3px rgba(0,0,0,0.22); 
-    box-shadow: 0px 7px 14px 3px rgba(0,0,0,0.22);
-    min-width: 10%;
-} */
-.right-side{
-    float:right;
+.header-path:hover {
+    filter: brightness(85%);
 }
 
-.navbar-header{
-    width:100%;
-}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,250,250, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
 
-.btn{
-    background: #2E8FFF;
-    border-color: #2E8FFF;
-    /* color: #FFFFFF; */
+.navbar-header {
+  width: 100%;
 }
 
 .navbar {
-    background: #2E8FFF;
-    /* overflow: hidden; */
-    margin-bottom: 0;
-    justify-content: left;
+  background: black;
+  /* overflow: hidden; */
+  margin-bottom: 0;
+  justify-content: left;
 }
 
 /* For the headings */
-*{
-    font-family: Tahoma, Geneva, sans-serif;
+* {
+  font-family: Tahoma, Geneva, sans-serif;
   font-size: 16px;
   letter-spacing: 2px;
   word-spacing: 2px;
-  color: #000000;
+  color: snow;
   font-weight: 400;
   text-decoration: none;
   font-style: normal;
   font-variant: normal;
   text-transform: none;
-  }
+}

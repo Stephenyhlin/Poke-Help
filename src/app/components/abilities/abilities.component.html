@@ -1,44 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" 
-          href= 
-"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-</head>
+<div
+  class="container-fluid m-0 p-0 w-100 d-flex flex-column back-display h-100"
+>
+  <div class="row w-100 pokedex-upper mx-0">
+    <div class="col">
+      <svg>
+        <circle
+          cx="25%"
+          cy="50%"
+          r="15"
+          stroke="#4062BB"
+          stroke-width="1"
+          fill="#4062BB"
+        />
+      </svg>
+    </div>
+    <div class="col">
+      <div class="row" id="rectangle"></div>
+      <div class="row" id="triangle-topleft"></div>
+    </div>
+  </div>
 
-<body>
-<mat-form-field>
-    <input type="text" placeholder="Enter Ability Name or ID" matInput [formControl]="search"
-        (keyup.enter)="searchAb()" (keydown.arrowright)="onRight()" (keyup.arrowleft)="onLeft()"
-        [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of name$ | async" [value]="option">
-            {{ option }}
-        </mat-option>
-    </mat-autocomplete>
-</mat-form-field>
+  <div class="pokdex-Inner w-100 d-flex flex-grow-1 border-right">
+    <div class="w-50 d-flex flex-column flex-grow-1 border-right">
+      <!-- This is my left pokedex -->
+      <div class="w-50 image-container center my-5">
+        <div *ngIf="ability$ | async as ability1">
+          <h5 class="text-center">Flavor Text:</h5>
+          <p class="text-center">{{ability1.flavor_text}}</p>
+        </div>
+      </div>
 
+      <div class= "w-50 name-container center my-5">
+          <h5 class="text-center" *ngIf="ability$ | async as ability1">{{ability1.getName() | titlecase}}</h5>
+      </div>
+      <div class= "w-50 name-container center">
+        <h5 class="text-center" *ngIf="ability$ | async as ability1">Id: {{ability1.id}}</h5>
+      </div>
+    </div>
+    <div class="w-50 flex-grow-1 d-flex flex-column border-left">
+      <!-- This is my right pokedex -->
+      <div class= "w-50 d-flex center search-container my-5 justify-content-center">
+        <mat-form-field>
+          <input
+            type="text"
+            placeholder="Enter Ability Name or ID"
+            matInput
+            [formControl]="search"
+            (keyup.enter)="searchAb()"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of name$ | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
 
-</body>
+      <div class="w-50 text-container center my-5 overflow-scroll">
+        <div class="h-100 scrollable" *ngIf="ability$ | async as ability1" infiniteScroll
+        [infiniteScrollDistance] = "2"
+        [scrollWindow] = "false"
+        [infiniteScrollThrottle] = "50">
+            <h5 class="text-center">Effect:</h5>
+            <p class="text-center">{{ability1.getEffect()}}</p>
+            <br>
+            <h5 class="text-center">Pokemon: </h5>
+            <ng-container *ngFor="let array of ability1.pokemon">
+              <div class="text-center">
+                  <a (click)="goTo(array.pokemon.name, '/pokemon/')">{{array.pokemon.name | titlecase | replaceWithspace}}</a>
+              </div>
+            </ng-container>
+          </div>
+      </div>
 
-
-
-
-<!-- <div class="input">
-    <label>
-        <input type="text" [formControl] ="search" (keyup.enter)="searchAb()"
-        >
-        <button (click)="searchAb()">Search</button>
-    </label>
-
-</div> -->
-
-
-<div *ngIf="ability$ | async as ability1">
-    <p>{{ability1.getName() | titlecase}}</p>
-    <p>{{ability1.getEffect()}}</p>
-
+      <div class="w-100 d-flex justify-content-center">
+        <div class="w-50 d-flex justify-content-between" *ngIf="ability$ | async as ability1">
+          <button (click)="onLeft()">Previous</button>
+          <button (click)="onRight()">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
