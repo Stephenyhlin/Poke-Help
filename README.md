@@ -1,3 +1,5 @@
+permalink: /index.html
+
 # PokeHelp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
@@ -31,8 +33,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Tasks left to do:
 - [X] Create auto complete feature
 - [X] Create scrolling pokemon blocks
-- [ ] Finish Dashboard
-- [ ] Style pages
+- [X] Finish Dashboard
+- [X] Style pages
 - [X] Finish move component and service
 - [ ] Finish Item component and service
 - [X] Lazy Loading
