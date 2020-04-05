@@ -65,7 +65,9 @@ export class MovesComponent implements OnInit {
   }
 
   onLeft() {
-    this.router.navigate([constant.moveContent, this.move_id - 1]);
+    if(!(this.move_id === 1)){
+      this.router.navigate([constant.moveContent, this.move_id - 1]);
+    }
   }
 
   getMove() {
@@ -79,6 +81,10 @@ export class MovesComponent implements OnInit {
         return throwError('404');
       })
     )
+  }
+
+  goTo(name:string,contentType:string){
+    this.router.navigate([contentType,name]);
   }
 
 }

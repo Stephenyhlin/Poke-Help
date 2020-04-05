@@ -24,14 +24,22 @@
     <div class="w-50 d-flex flex-column flex-grow-1 border-right">
       <!-- This is my left pokedex -->
       <div class="w-50 image-container center my-5">
+        <div *ngIf="ability$ | async as ability1">
+          <h5 class="text-center">Flavor Text:</h5>
+          <p class="text-center">{{ability1.flavor_text}}</p>
+        </div>
       </div>
 
-      <div class= "w-50 name-container center my-5"></div>
-      <div class= "w-50 name-container center"></div>
+      <div class= "w-50 name-container center my-5">
+          <h5 class="text-center" *ngIf="ability$ | async as ability1">{{ability1.getName() | titlecase}}</h5>
+      </div>
+      <div class= "w-50 name-container center">
+        <h5 class="text-center" *ngIf="ability$ | async as ability1">Id: {{ability1.id}}</h5>
+      </div>
     </div>
     <div class="w-50 flex-grow-1 d-flex flex-column border-left">
       <!-- This is my right pokedex -->
-      <div class= "w-50 d-flex center name-container my-5 justify-content-center">
+      <div class= "w-50 d-flex center search-container my-5 justify-content-center">
         <mat-form-field>
           <input
             type="text"
@@ -50,16 +58,26 @@
       </div>
 
       <div class="w-50 text-container center my-5 overflow-scroll">
-        <div *ngIf="ability$ | async as ability1">
-            <p>{{ability1.getName() | titlecase}}</p>
-            <p>{{ability1.getEffect()}}</p>
-        </div>
+        <div class="h-100 scrollable" *ngIf="ability$ | async as ability1" infiniteScroll
+        [infiniteScrollDistance] = "2"
+        [scrollWindow] = "false"
+        [infiniteScrollThrottle] = "50">
+            <h5 class="text-center">Effect:</h5>
+            <p class="text-center">{{ability1.getEffect()}}</p>
+            <br>
+            <h5 class="text-center">Pokemon: </h5>
+            <ng-container *ngFor="let array of ability1.pokemon">
+              <div class="text-center">
+                  <a (click)="goTo(array.pokemon.name, '/pokemon/')">{{array.pokemon.name | titlecase | replaceWithspace}}</a>
+              </div>
+            </ng-container>
+          </div>
       </div>
 
       <div class="w-100 d-flex justify-content-center">
-        <div class="w-50 d-flex justify-content-between">
-          <button>Previous</button>
-          <button>Next</button>
+        <div class="w-50 d-flex justify-content-between" *ngIf="ability$ | async as ability1">
+          <button (click)="onLeft()">Previous</button>
+          <button (click)="onRight()">Next</button>
         </div>
       </div>
     </div>

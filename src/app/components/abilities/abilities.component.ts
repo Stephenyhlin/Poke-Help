@@ -63,7 +63,9 @@ export class AbilitiesComponent implements OnInit {
   }
 
   onLeft() {
-    this.router.navigate([constant.abilityContent, this.a_id - 1]);
+    if(!(this.a_id === 1)) {
+      this.router.navigate([constant.abilityContent, this.a_id - 1]);
+    }
   }
 
   getAbility(): void {
@@ -78,5 +80,8 @@ export class AbilitiesComponent implements OnInit {
         })
       )
     );
+  }
+  goTo(name:string,contentType:string){
+    this.router.navigate([contentType,name]);
   }
 }
