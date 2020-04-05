@@ -46,18 +46,20 @@ export class Pokemon{
 }
 
 export class MoreData{
-    flavor_text: any[]
+    flavor_text: String;
 
     constructor(data:any){
         this.flavor_text = this.getArrayValues(data.flavor_text_entries);
     }
 
-    getArrayValues(data:any[]) : any[] {
-        let array = [];
+    getArrayValues(data:any[]) : String {
+        let returnValue: String;
         // let reg = new RegExp(environment.POKE_API,'g')
         data.forEach(function(element){
-            array.push(element);
+            if(element.language.name === "en"){
+                returnValue = element.flavor_text;
+            }
         });
-        return array;
+        return returnValue;
     }
 }

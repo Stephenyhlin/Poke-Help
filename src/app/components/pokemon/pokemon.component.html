@@ -1,18 +1,53 @@
-<!-- <div class="input">
-    <label>
-        <input type="text" [formControl] ="search" (keyup.enter)="searchPoke()" (keydown.arrowright) = "onRight()"
-        (keyup.arrowleft) = "onLeft()"
-        >
-        <button (click)="searchPoke()">Search</button>
-    </label>
+<div
+  class="container-fluid m-0 p-0 w-100 d-flex flex-column back-display h-100"
+>
+  <div class="row row-cols-2 pokedex-upper">
+    <div class="col">
+      <svg>
+        <circle
+          cx="25%"
+          cy="50%"
+          r="15"
+          stroke="#4062BB"
+          stroke-width="1"
+          fill="#4062BB"
+        />
+      </svg>
+    </div>
+    <div class="col">
+      <div class="row" id="rectangle"></div>
+      <div class="row" id="triangle-topleft"></div>
+    </div>
+  </div>
 
-</div> -->
+  <div class="pokdex-Inner w-100 d-flex flex-grow-1 border-right">
+    <div class="w-50 d-flex flex-column flex-grow-1 border-right">
+      <!-- This is my left pokedex -->
+      <div class="w-50 image-container center my-5">
+        <div class="h-100" *ngIf="pokemon$ | async as pokemon1">
+            <img class="img-top" *ngIf="pokemon1.sprites.front_default" src={{pokemon1.sprites.front_default}}>
+            <h1 *ngIf="!pokemon1.sprites.front_default">No Image to show</h1>
+        </div>
+      </div>
 
-<body>
-    <div class="searchbar">
-        <mat-form-field style="width:400px !important">
-            <input type="text" placeholder="Enter Pokemon Name or ID" matInput [formControl]="search"
-                (keyup.enter)="searchPoke()" (keydown.arrowright)="onRight()" (keyup.arrowleft)="onLeft()"
+      <div class= "w-50 name-container center my-5 d-flex justify-content-center">
+        <h5 class="center"
+            *ngIf="pokemon$ | async as pokemon1">
+            {{pokemon1.name | titlecase}}
+        </h5>
+      </div>
+      <div class= "w-50 name-container center d-flex justify-content-center">
+          <h5 class="center" *ngIf="pokemon$ | async as pokemon1">
+            Id: {{pokemon1.id}}
+          </h5>
+      </div>
+    </div>
+    <div class="w-50 flex-grow-1 d-flex flex-column border-left">
+      <!-- This is my right pokedex -->
+      <div class= "w-50 d-flex center search-container my-5 justify-content-center">
+        <mat-form-field>
+                <input type="text" placeholder="Enter Pokemon Name or ID" matInput [formControl]="search"
+                (keyup.enter)="searchPoke()" 
                 [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                 <mat-option *ngFor="let option of name$ | async" [value]="option">
@@ -20,94 +55,46 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-    </div>
-    <div class="container-fluid" *ngIf="pokemon$ | async as pokemon1">
-            <div class="searchbar">
-                    <h1 class="titlename">{{pokemon1.name | titlecase}}</h1>
-            </div>
-        <div class="row">
-                <div class="card" id="pokemon-summary">
-                    <img class="card-img-top" src={{pokemon1.sprites.front_default}}>
-                    <div  class="card-body">
-                        <h5 class="card-title">{{pokemon1.name | titlecase}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Id: {{pokemon1.id}}</h6>
-                    </div>
-                </div>
-            <div class="card" id="flavor-text">
-                <div class="card-body" *ngIf="moreData$ | async as data">
-                    <h5 class="card-title"> Flavor Text</h5>
-                    <p class="card-text">{{data.flavor_text[1].flavor_text}}</p>
-                </div>
+      </div>
 
-            </div>
-            <div class="card" id="pokemon-summary">
-                <div class="card-body">
-                    <h5 class="card-title"> Back sprite</h5>
+      <div class="w-50 text-container center my-5">
+        <div class="h-100 scrollable" *ngIf="pokemon$ | async as pokemon1"
+            infiniteScroll
+            [infiniteScrollDistance] = "2"
+            [scrollWindow] = "false"
+            [infiniteScrollThrottle] = "50">
+                <div *ngIf="moreData$ | async as data">
+                    <h5 class="text-center">Flavor Text: </h5>
+                    <p class="text-center">{{data.flavor_text}}</p>
                 </div>
-                <img class="card-img" src={{pokemon1.sprites.back_default}}>
-            </div>
+                <br>
+                <h5 class="text-center">Stats: </h5>
+                <ng-container *ngFor="let stat of pokemon1.stat">
+                    <div class="text-center card-text" id ="stats">{{stat.stat.name | replaceWithspace |titlecase}}: {{stat.base_stat}}</div>
+                </ng-container>
+                <br>
+                <h5 class="text-center">Ability</h5>
+                <ng-container *ngFor="let array of pokemon1.ability">
+                    <div class="text-center">
+                        <a class="text-center" (click)="goTo(array.ability.name, '/ability/')">{{array.ability.name | replaceWithspace |titlecase}}</a>
+                    </div>
+                </ng-container>
+                <br>
+                <h5 class="text-center">Moves: </h5>
+                <ng-container *ngFor="let array of pokemon1.moves">
+                    <div class="text-center">
+                        <a (click)="goTo(array.move.name, '/moves/')">{{array.move.name | titlecase | replaceWithspace}}</a>
+                    </div>
+                </ng-container>
         </div>
-        <div class = "row">
-                <div class="card" id="pokemon-summary">
-                        <div class="card-body">
-                            <h5 class="card-subtitle mb-2 text-muted">Stats</h5>
-                            <ng-container *ngFor="let stat of pokemon1.stat">
-                                    <div class="card-text" id ="stats">{{stat.stat.name | replaceWithspace |titlecase}}: {{stat.base_stat}}</div>
-                            </ng-container>
-                        </div>
-                    </div>
-                <div class="card" id="moves">
-                    <div class="card-body">
-                        <div> Moves</div>
-                        <div class="scrollable" 
-                        infiniteScroll
-                        [infiniteScrollDistance] = "2"
-                        [scrollWindow] = "false"
-                        [infiniteScrollThrottle] = "50"
-                        >
-                        <ng-container *ngFor="let array of pokemon1.moves">
-                            <div>
-                                <a (click)="goTo(array.move.name, '/moves/')">{{array.move.name | titlecase | replaceWithspace}}</a>
-                            </div>
-                        </ng-container>
+      </div>
 
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="card" id = "pokemon-summary">
-                    <div class="card-body">
-                        <h5 class="card-subtitle mb-2 text-muted">Ability</h5>
-                        <ng-container *ngFor="let array of pokemon1.ability">
-                            <div class="card-text">{{array.ability.name | replaceWithspace |titlecase}}</div>
-                        </ng-container>
-                    </div>
-                </div>    
-
-            </div>
-        
-        <!-- <p>{{pokemon1.id }}</p>
-        <p>{{pokemon1.name | titlecase}}</p>
-        <img src={{pokemon1.sprites.front_default}}> -->
-        <!-- <p >{{pokemon1.height}}</p> -->
-        <!-- <ng-container *ngFor="let array of pokemon1.ability">
-            <div>
-                <a (click)="goTo(array.ability.name, '/ability/')">{{array.ability.name |titlecase |replaceWithspace}}</a>
-            </div>
-
-        </ng-container> -->
-
-
+      <div class="w-100 d-flex justify-content-center">
+        <div class="w-50 d-flex justify-content-between">
+          <button *ngIf="pokemon$ | async as pokemon1" (click)="onLeft()">Previous</button>
+          <button *ngIf="pokemon$ | async as pokemon1" (click)="onRight()">Next</button>
+        </div>
+      </div>
     </div>
-</body>
-
-
-
-<!-- <div *ngIf="pokemon">
-    <p>{{pokemon.id || async}}</p>
-    <p>{{pokemon.name}}</p>
-    <img src = {{pokemon.sprites.back_default}}>
-    <p >{{pokemon.height}}</p>
-    <li *ngFor="let array of pokemon.ability">{{array.ability.name}}</li>
-</div> -->
+  </div>
+</div>
